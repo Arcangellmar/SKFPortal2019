@@ -19,14 +19,14 @@
                     <div class="form-outline mb-4">
                         @*<label class="form-label text-light" for="usuario">Usuario</label>
                         <input type="text" id="usuario" name="usuario" class="form-control" required />*@
-                        @Html.TextBoxFor(u => u.username, new { @class = "form-control", type = "text", placeholder="Usuario" })
+                        @Html.TextBoxFor(u => u.username, new { @class = "form-control", type = "text", placeholder="Usuario" , value= "juan.adm24@gmail.com" })
                     </div>
                     @Html.AntiForgeryToken()
                     <!-- Password input -->
                     <div class="form-outline mb-4">
                         @*<label class="form-label text-light" for="clave">Password</label>
                         <input type="password" id="clave" name="clave" class="form-control" required />*@
-                        @Html.TextBoxFor(u=>u.password,new { @class= "form-control", type="password", placeholder = "Clave" })
+                        @Html.TextBoxFor(u=>u.password,new { @class= "form-control", type="password", placeholder = "Clave", value = "SKF123" })
                     </div>
 
                     <button type="submit" id="btn-ingresar" class="btn btn-primary">Ingresa</button>

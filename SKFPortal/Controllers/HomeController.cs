@@ -58,8 +58,10 @@ namespace SKFPortal.Controllers
         [HttpGet]
         public FileResult GenerarBoleta()
         {
-            string PathReportes = @"C:\Users\rolan\OneDrive\Documentos\GitHub\SKFPortal2019\SKFPortal\Reportes\";
-            string PathPDF = @"C:\Users\rolan\OneDrive\Documentos\GitHub\SKFPortal2019\SKFPortal\PDF\";
+            //string PathReportes = @"C:\Users\rolan\OneDrive\Documentos\GitHub\SKFPortal2019\SKFPortal\Reportes\";
+            string PathReportes = @"D:\Fuentes\SKFPortal2019\SKFPortal\Reportes\";
+            //string PathPDF = @"C:\Users\rolan\OneDrive\Documentos\GitHub\SKFPortal2019\SKFPortal\PDF\";
+            string PathPDF = @"D:\Fuentes\SKFPortal2019\SKFPortal\PDF\";
             String nombreArchivo = "Boleta" + DateTime.Now.ToString("dd-MM-yyyy") + ".pdf";
             String rutaArchivo = PathPDF + nombreArchivo;
 
@@ -94,46 +96,11 @@ namespace SKFPortal.Controllers
             parametro3.CurrentValues.Add(valor3);
             parametros.Add(parametro3);
 
-            oRep.SetDatabaseLogon("sa", "123456a.", "DESKTOP-CFBON5B", DB);
-
-
             oRep.Load(PathReportes + "NEO_Boleta_Pago.rpt");
 
-            //Conexion SQL para obtener DocEntre
-            //Conexion SQL para obtener DocEntre
-            //oRep.SetParameterValue("@Personal", "000152");
-            //oRep.SetParameterValue("@cPeriodo", "0334");
-            //oRep.SetParameterValue("@cProceso", "01");
+            oRep.SetDatabaseLogon("sa", "@Admin123", "CLRLAP122", DB);
 
-            oRep.ExportToDisk(ExportFormatType.PortableDocFormat, PathPDF + nombreArchivo + ".pdf");
-
-            //using (SqlConnection cn = new SqlConnection("Data Source=DESKTOP-CFBON5B; User Id=sa; Password=123456a.;"))
-            //{
-            //    cn.Open();
-            //    SqlCommand cmd = new SqlCommand("", cn);
-
-            //    SqlDataReader dr = cmd.ExecuteReader();
-
-            //    if (dr.HasRows)
-            //    {
-            //        while (dr.Read())
-            //        {
-            //            oRep.SetParameterValue("@Personal", "000152");
-            //            oRep.SetParameterValue("@cPeriodo", "0334");
-            //            oRep.SetParameterValue("@cProceso", "01");
-
-            //            oRep.ExportToDisk(ExportFormatType.PortableDocFormat, PathPDF + nombreArchivo + ".pdf");
-            //            Console.WriteLine("Exito - PDF creado Correctamente");
-
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Info - No existen registros");
-            //    }
-            //    cn.Close();
-            //}
-
+            oRep.ExportToDisk(ExportFormatType.PortableDocFormat, PathPDF + nombreArchivo);
 
             return File(rutaArchivo, "application/pdf", nombreArchivo);
         }

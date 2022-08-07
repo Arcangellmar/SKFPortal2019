@@ -20,6 +20,8 @@ namespace SKFPortal.Controllers
                 return RedirectToAction("Dashboard", "Home");
             }
             vmUser vm = new vmUser();
+            vm.username = "juan.adm24@gmail.com";
+            vm.password = "SKF123";
             return View(vm);
         }
 
