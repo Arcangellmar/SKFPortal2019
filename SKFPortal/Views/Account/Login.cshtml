@@ -5,36 +5,39 @@
     Layout = "~/Views/Shared/_SoloBootstrap.cshtml";
 }
 <div class="container-fluid" style="background-image: linear-gradient(75deg, #3832c5, #412b7c);">
-    <div class="container">
-        <div class="row min-vh-100 justify-content-center align-items-center text-center">
-            <div class="col-md-6 col-12 d-md-flex d-none">
-                <img src="~/Content/img/index.png" class="img-fluid" alt="" />
-            </div>
-            <div class="col-md-6 col-12">
-                <h1 style="color: #6cd1ff;">¡Bienvenido a Vive - SKF!</h1>
-                <p class="text-light">Ingresa al portal.</p>
-                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <!-- Email input -->
-                    <div class="form-outline mb-4">
-                        @*<label class="form-label text-light" for="usuario">Usuario</label>
-                        <input type="text" id="usuario" name="usuario" class="form-control" required />*@
-                        @Html.TextBoxFor(u => u.username, new { @class = "form-control", type = "text", placeholder="Usuario" , value= "juan.adm24@gmail.com" })
-                    </div>
-                    @Html.AntiForgeryToken()
-                    <!-- Password input -->
-                    <div class="form-outline mb-4">
-                        @*<label class="form-label text-light" for="clave">Password</label>
-                        <input type="password" id="clave" name="clave" class="form-control" required />*@
-                        @Html.TextBoxFor(u=>u.password,new { @class= "form-control", type="password", placeholder = "Clave", value = "SKF123" })
-                    </div>
+    <div class="row justify-content-center align-items-center text-center">
+        <div class="col-md-6 col-12 d-md-flex d-none min-vh-100" style="background-image: url('../../Content/img/index.png'); background-size: cover; background-repeat: no-repeat; background-position: center">
+            @*<img src="~/Content/img/index.png" class="img-fluid" alt="" />*@
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="card mx-auto" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Vive SKF</h5>
+                    <p class="card-subtitle">Inicia Sesion</p>
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            @*<label class="form-label text-light" for="usuario">Usuario</label>
+                <input type="text" id="usuario" name="usuario" class="form-control" required />*@
+                            @Html.TextBoxFor(u => u.username, new { @class = "form-control", type = "text", placeholder = "Usuario", value = "juan.adm24@gmail.com" })
+                        </div>
+                        @Html.AntiForgeryToken()
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            @*<label class="form-label text-light" for="clave">Password</label>
+                <input type="password" id="clave" name="clave" class="form-control" required />*@
+                            @Html.TextBoxFor(u => u.password, new { @class = "form-control", type = "password", placeholder = "Clave", value = "SKF123" })
+                        </div>
 
-                    <button type="submit" id="btn-ingresar" class="btn btn-primary">Ingresa</button>
-                }
-                @if (ViewBag.Message != null)
-                {
-                    <p class="text-light">@ViewBag.Message</p>
-                }
+                        <button type="submit" id="btn-ingresar" class="btn btn-primary">Ingresa</button>
+                    }
+                    @if (ViewBag.Message != null)
+                    {
+                        <p class="text-light">@ViewBag.Message</p>
+                    }
+                    <p class="m-2">Powered by TEAM STIC</p>
+                </div>
             </div>
         </div>
     </div>
